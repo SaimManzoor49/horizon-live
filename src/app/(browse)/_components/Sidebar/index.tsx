@@ -1,6 +1,6 @@
 import React from 'react'
 import Wrapper from './Wrapper'
-import Toggle from './Toggle'
+import Toggle, { ToggleSkeleton } from './Toggle'
 import Recomanded, { RecomandedSkeleton } from './Recomanded'
 import { getRecomanded } from '@/lib/recomanded-users'
 
@@ -23,6 +23,7 @@ export default Sidebar
 export const SidebarSkeleton = ()=>{
     return(
         <aside className='fixed left-0 flex flex-col w-[70px] lg:w-60 h-full bg-background border-r border-[#2D2E35] z-50'>
+            <ToggleSkeleton />
             <RecomandedSkeleton />
         </aside>
     )
