@@ -3,6 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 import { Skeleton } from './ui/skeleton'
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
+import LiveBadge from './live-badge'
 
 
 
@@ -48,7 +49,7 @@ const UserAvatar = ({username,imageUrl,isLive,showBadge,size}:UserAvatarProps) =
         {
             canShowBadge && (
                 <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
-                    Live
+                    <LiveBadge />
                 </div>
             )
         }
@@ -57,3 +58,12 @@ const UserAvatar = ({username,imageUrl,isLive,showBadge,size}:UserAvatarProps) =
 }
 
 export default UserAvatar
+
+interface UserAvatarSkeletonProps extends VariantProps<typeof avatarSizes>{};
+
+export const UserAvatarSkeleton = ({size}:UserAvatarSkeletonProps)=>{
+    return <Skeleton className={cn(
+        "rounded-full",
+        avatarSizes({size})
+    )} />
+}
