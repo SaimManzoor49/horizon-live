@@ -18,19 +18,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-        <ClerkProvider appearance={{baseTheme:dark}}>
+    <ClerkProvider appearance={{ baseTheme: dark }}>
 
-    <html lang="en">
-      <body className={inter.className}>
+      <html lang="en">
+        <body className={inter.className}>
           <ThemeProvider
-          attribute='class'
-          forcedTheme='dark'
-          storageKey='horizon-theme'
+            attribute='class'
+            forcedTheme='dark'
+            storageKey='horizon-theme'
           >
-        {children}
+            {children}
           </ThemeProvider>
         </body>
-    </html>
-        </ClerkProvider>
+      </html>
+    </ClerkProvider>
   )
 }

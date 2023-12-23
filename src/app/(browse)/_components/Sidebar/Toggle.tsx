@@ -3,6 +3,7 @@ import React from 'react'
 import { useSidebar } from '../../../../../store/useSidebar'
 import { Button } from '@/components/ui/button'
 import { ArrowLeftFromLine, ArrowRightFromLine } from 'lucide-react'
+import Hint from '@/components/hint'
 
 const Toggle = () => {
 
@@ -20,23 +21,27 @@ const Toggle = () => {
                     >
                         For you
                     </p>
+                    <Hint label={label} side='right' asChild>
                     <Button
                      className='h-auto p-2 ml-auto'
                      variant={'ghost'}
                      onClick={onCollapse}
-                    >
+                     >
                         <ArrowLeftFromLine  className='h-4 w-4 '/>
                     </Button>
+                        </Hint>
                 </div>
             ):(
                 <div className="hidden lg:flex w-full items-center justify-center pt-4 mb-4">
+                    <Hint label={label} side='right' asChild>
                     <Button 
                     variant={'ghost'}
-                     className='h-auto p-2'
-                     onClick={onExpand}
-                     >
+                    className='h-auto p-2'
+                    onClick={onExpand}
+                    >
                         <ArrowRightFromLine className='w-4 h-4' />
                     </Button>
+                         </Hint>
                 </div>
             )}
         </>
