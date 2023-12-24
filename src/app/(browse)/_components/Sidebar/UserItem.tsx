@@ -18,7 +18,7 @@ const UserItem = ({ username, imageUrl, isLive }: UserItemProps) => {
 
     const pathname = usePathname()
     const { collapsed } = useSidebar(state => state)
-    const href = `/${pathname}`
+    const href = `/${username}`
     const isActive = pathname === href
 
     return (
@@ -26,7 +26,7 @@ const UserItem = ({ username, imageUrl, isLive }: UserItemProps) => {
             asChild
             variant={'ghost'}
             className={cn(
-                "w-full g-12",
+                "w-full g-12 ",
                 collapsed ? 'justify-center' : 'justify-start',
                 isActive && 'bg-accent'
             )}
