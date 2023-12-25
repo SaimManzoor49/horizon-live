@@ -23,7 +23,7 @@ const isFollowing = await isFollowingUser(user.id)
     <div >
         {user.username}
         isFollowing :{`${isFollowing}`}
-        <Actions />
+        <Actions isFollowing={isFollowing} userId={user.id} />
         </div>
   )
 }
