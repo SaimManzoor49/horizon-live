@@ -23,6 +23,16 @@ const Page = async () => {
                     label="Enable chat"
                     value={stream.isChatEnabled}
                 />
+                <ToggleCard
+                    fieldId="isChatDelayed"
+                    label="Delay chat"
+                    value={stream.isChatDelayed}
+                />
+                <ToggleCard
+                    fieldId="isChatFollowersOnly"
+                    label="Must be following to chat"
+                    value={stream.isChatFollowersOnly}
+                />
             </div>
         </div>
 
