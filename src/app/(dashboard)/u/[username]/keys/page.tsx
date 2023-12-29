@@ -1,9 +1,9 @@
-import { Button } from '@/components/ui/button'
 import React from 'react'
 import UrlCard from './_components/UrlCard'
 import { getSelf } from '@/lib/auth-service'
 import { getStreamByUserId } from '@/lib/stream-service'
 import KeyCard from './_components/KeyCard'
+import ConnectModal from './_components/ConnectModal'
 
 const Page = async() => {
 
@@ -18,9 +18,7 @@ const Page = async() => {
             <h1 className="text-2xl font-bold">
                 Keys & URLs
             </h1>
-            <Button variant={'primary'}>
-                Generate
-            </Button>
+            <ConnectModal />
         </div>
         <div className="space-y-4"> 
         <UrlCard
