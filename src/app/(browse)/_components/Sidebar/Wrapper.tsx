@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { useSidebar } from '../../../../../store/useSidebar'
+import { useSidebar } from '../../../../store/useSidebar'
 import { cn } from '@/lib/utils'
 import { ToggleSkeleton } from './Toggle'
 import { RecomandedSkeleton } from './Recomanded'

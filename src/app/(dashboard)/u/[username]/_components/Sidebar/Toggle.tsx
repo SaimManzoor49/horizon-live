@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useCreatorSidebar } from '../../../../../../../store/useCreatorSidebar'
+import { useCreatorSidebar } from '../../../../../../store/useCreatorSidebar'
 import Hint from '@/components/hint'
 import { Button } from '@/components/ui/button'
 import { ArrowLeftFromLine, ArrowRightFromLine } from 'lucide-react'

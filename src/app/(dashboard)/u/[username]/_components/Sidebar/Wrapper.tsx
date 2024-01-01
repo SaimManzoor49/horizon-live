@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from "@/lib/utils"
-import { useCreatorSidebar } from "../../../../../../../store/useCreatorSidebar"
+import { useCreatorSidebar } from "../../../../../../store/useCreatorSidebar"
 
 
 interface WrapperProps{

@@ -1,7 +1,7 @@
 'use client'  
 
 import React, { useEffect } from 'react'
-import { useSidebar } from '../../../../store/useSidebar'
+import { useSidebar } from '../../../store/useSidebar'
 import { cn } from '@/lib/utils'
 import { useMediaQuery } from 'usehooks-ts'
 

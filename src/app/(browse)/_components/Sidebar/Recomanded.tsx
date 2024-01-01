@@ -1,7 +1,7 @@
 'use client'
 import {  User } from '@prisma/client'
 import React from 'react'
-import { useSidebar } from '../../../../../store/useSidebar'
+import { useSidebar } from '../../../../store/useSidebar'
 import UserItem, { UserItemSkeleton } from './UserItem'
 
 

@@ -25,7 +25,7 @@ import { AlertTriangle } from "lucide-react"
 
 import { IngressInput } from "livekit-server-sdk"
 import { useState,useTransition,useRef, ElementRef } from "react"
-import { createIngress } from "../../../../../../../actions/ingress"
+import { createIngress } from "../../../../../../actions/ingress"
 import { toast } from "sonner"
 
 

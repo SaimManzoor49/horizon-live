@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { LucideIcon } from "lucide-react"
-import { useCreatorSidebar } from "../../../../../../../store/useCreatorSidebar"
+import { useCreatorSidebar } from "../../../../../../store/useCreatorSidebar"
 import Link from "next/link"
 import { Skeleton } from "@/components/ui/skeleton"
 

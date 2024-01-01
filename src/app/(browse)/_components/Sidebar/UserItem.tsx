@@ -2,7 +2,7 @@
 import { cn } from '@/lib/utils'
 import { usePathname } from 'next/navigation'
 import React from 'react'
-import { useSidebar } from '../../../../../store/useSidebar'
+import { useSidebar } from '../../../../store/useSidebar'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'

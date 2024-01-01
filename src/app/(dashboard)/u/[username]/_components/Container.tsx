@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils"
 import { useEffect } from "react"
 import { useMediaQuery } from "usehooks-ts"
-import { useCreatorSidebar } from "../../../../../../store/useCreatorSidebar"
+import { useCreatorSidebar } from "../../../../../store/useCreatorSidebar"
 
 interface ContainerProps{
     children:React.ReactNode
