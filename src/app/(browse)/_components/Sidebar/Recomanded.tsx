@@ -1,5 +1,5 @@
 'use client'
-import { Stream, User } from '@prisma/client'
+import {  User } from '@prisma/client'
 import React from 'react'
 import { useSidebar } from '../../../../../store/useSidebar'
 import UserItem, { UserItemSkeleton } from './UserItem'
@@ -7,7 +7,7 @@ import UserItem, { UserItemSkeleton } from './UserItem'
 
 interface RecomandedProps{
     data:(User&{
-        stream:Stream|null
+        stream:{isLive:boolean}|null
     })[]
 }
 
