@@ -8,6 +8,7 @@ useTracks
 } from '@livekit/components-react'
 import OfflineVideo from "./OfflineVideo"
 import LoadingVideo from "./LoadingVideo"
+import LiveVideo from "./LiveVideo"
 
 interface VideoProps{
   hostName:string,
@@ -31,7 +32,7 @@ const Video = ({hostIdentity,hostName}:VideoProps) => {
   }else if(!participant || track.length===0){
     content =<LoadingVideo  label={connectionState} /> 
   }else{
-    content =<p>Live video</p> 
+    content =<LiveVideo participant={participant} /> 
 
   }
 
