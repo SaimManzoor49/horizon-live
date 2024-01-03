@@ -8,7 +8,7 @@ import {
 } from '@livekit/components-react'
 import FullScreen from "./FullScreen"
 import { useEventListener } from "usehooks-ts"
-import VolumeControl from "./volumeControl"
+import VolumeControl from "./VolumeControl"
 
 
 interface LiveVideoProps {
