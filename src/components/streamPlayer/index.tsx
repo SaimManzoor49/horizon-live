@@ -7,6 +7,7 @@ import {LiveKitRoom} from '@livekit/components-react'
 import Video from './Video'
 import { useChatSidebar } from '@/store/useChatSidebar'
 import { cn } from '@/lib/utils'
+import Chat from './Chat'
 
 interface StreamPlayerProps {
     user: User & { stream: Stream | null },
