@@ -1,9 +1,11 @@
 'use client'
 
 import { useChatSidebar } from "@/store/useChatSidebar"
-import { useConnectionState, useRemoteParticipant } from "@livekit/components-react"
+import { useChat, useConnectionState, useRemoteParticipant } from "@livekit/components-react"
 import { ConnectionState } from "livekit-client"
+import { useEffect, useMemo, useState } from "react"
 import { useMediaQuery } from "usehooks-ts"
+import ChatHeader from "./ChatHeader"
 
 interface ChatProps {
     hostName: string,
@@ -16,7 +18,7 @@ interface ChatProps {
 }
 
 const Chat = ({ hostIdentity, hostName, isChatDelayed, isChatEnabled, isChatFollowersOnly, isFollowing, viewerName }: ChatProps) => {
-
+    const [value, setValue] = useState("")
     const matches = useMediaQuery('(max-width: 1024px)')
 
     const { variant, onExpand } = useChatSidebar((state) => state)
@@ -27,8 +29,31 @@ const Chat = ({ hostIdentity, hostName, isChatDelayed, isChatEnabled, isChatFoll
     
     const isHidden = !isChatEnabled || !isOnline
 
+    const {chatMessages:messages,send} = useChat();
+
+    useEffect(()=>{
+        if(matches) onExpand();
+    },[matches,onExpand])
+
+    const reversedMessages = useMemo(()=>{
+        return messages.sort((a,b)=>b.timestamp - a.timestamp)
+    },[messages])
+
+    const onSubmit = ()=>{
+
+        if(!send) return;
+        send(value)
+        setValue("")
+    }
+
+    const onChange = (value:string)=>{
+        setValue(value)
+    }
+
     return (
-        <div>Chat</div>
+        <div className="flex flex-col bg-background border-l border-b pt-0 h-[calc(100vh-80px)]">
+            <ChatHeader />
+        </div>
     )
 }
 
