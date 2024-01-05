@@ -1,25 +1,24 @@
 'use client'
 
-import { ArrowLeftFromLine, ArrowRightFromLine } from "lucide-react"
+import { MessageSquare, Users } from "lucide-react"
 import Hint from "../hint"
 import { Button } from "../ui/button"
-import { useChatSidebar } from "@/store/useChatSidebar"
+import { ChatVariants, useChatSidebar } from "@/store/useChatSidebar"
 
 
-const ChatToggle = () => {
-const {collapsed,onExpand,onChangeVariant,onCollapse} = useChatSidebar((state)=>state)
+const VariantToggle = () => {
+const {variant,onChangeVariant} = useChatSidebar((state)=>state)
 
-const Icon = collapsed ? ArrowLeftFromLine : ArrowRightFromLine
+const isChat = variant==ChatVariants.CHAT
+
+const Icon = isChat ? Users : MessageSquare
 
 const onToggle=()=>{
-    if(collapsed){
-        onExpand()
-    }else{
-        onCollapse()
-    }
+    const newVariant = isChat ?ChatVariants.COMMUNITY:ChatVariants.CHAT
+    onChangeVariant(newVariant)
 }
 
-const label = collapsed ?"Expand":"Collapse"
+const label = isChat ?"Community":"Go back to chat"
 
   return (
     <Hint label={label} side="left" asChild>
@@ -34,4 +33,4 @@ const label = collapsed ?"Expand":"Collapse"
   )
 }
 
-export default ChatToggle
+export default VariantToggle

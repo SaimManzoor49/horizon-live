@@ -1,6 +1,6 @@
 'use client'
 
-import { useChatSidebar } from "@/store/useChatSidebar"
+import { ChatVariants, useChatSidebar } from "@/store/useChatSidebar"
 import { useChat, useConnectionState, useRemoteParticipant } from "@livekit/components-react"
 import { ConnectionState } from "livekit-client"
 import { useEffect, useMemo, useState } from "react"
@@ -53,6 +53,16 @@ const Chat = ({ hostIdentity, hostName, isChatDelayed, isChatEnabled, isChatFoll
     return (
         <div className="flex flex-col bg-background border-l border-b pt-0 h-[calc(100vh-80px)]">
             <ChatHeader />
+            {variant===ChatVariants.CHAT && (
+                <>
+                <p>chat mode</p>                
+                </>
+            )}
+            {variant===ChatVariants.COMMUNITY && (
+                <>
+                <p>chat Community</p>                
+                </>
+            )}
         </div>
     )
 }
