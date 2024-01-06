@@ -40,7 +40,7 @@ const ChatForm = ({onChange,onSubmit,value,isChatFollowersOnly,isDelayed,isFollo
             onSubmit()
         }
     }
-    if(!isHidden){ /////////////////////////////////////////////////////// !!
+    if(isHidden){ /////////////////////////////////////////////////////// !!
         return null
     }
 

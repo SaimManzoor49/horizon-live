@@ -7,6 +7,7 @@ import { useEffect, useMemo, useState } from "react"
 import { useMediaQuery } from "usehooks-ts"
 import ChatHeader from "./ChatHeader"
 import ChatForm from "./ChatForm"
+import { ChatList } from "./ChatList"
 
 interface ChatProps {
     hostName: string,
@@ -56,6 +57,10 @@ const Chat = ({ hostIdentity, hostName, isChatDelayed, isChatEnabled, isChatFoll
             <ChatHeader />
             {variant===ChatVariants.CHAT && (
                 <>
+                <ChatList
+                messages={reversedMessages}
+                isHidden={isHidden}
+                />
                 <ChatForm 
                 onSubmit={onSubmit}
                 value={value}
