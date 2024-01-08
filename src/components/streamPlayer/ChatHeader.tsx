@@ -14,7 +14,7 @@ const ChatHeader = () => {
         <ChatToggle />
         </div>
         <p className="font-semibold text-primary text-center">
-        Stream Caht    
+        Stream Chat    
         </p>
         <div className="absolute right-2 top-2">
             <VariantToggle />

@@ -11,65 +11,65 @@ import ChatInfo from "./ChatInfo"
 interface ChatFormProps {
     onSubmit: () => void
     value: string
-    onChange:(value:string)=>void
-    isHidden:boolean
-    isChatFollowersOnly:boolean
-    isDelayed:boolean
-    isFollowing:boolean
+    onChange: (value: string) => void
+    isHidden: boolean
+    isChatFollowersOnly: boolean
+    isDelayed: boolean
+    isFollowing: boolean
 }
 
-const ChatForm = ({onChange,onSubmit,value,isChatFollowersOnly,isDelayed,isFollowing,isHidden}:ChatFormProps) => {
-    const [isDelayedBlocked,setIsDelayedBlocked] = useState(false)
+const ChatForm = ({ onChange, onSubmit, value, isChatFollowersOnly, isDelayed, isFollowing, isHidden }: ChatFormProps) => {
+    const [isDelayedBlocked, setIsDelayedBlocked] = useState(false)
 
     const isFollowerOnlyAndNotFollowing = isChatFollowersOnly && !isFollowing
-    const isDisabled  = isHidden || isDelayedBlocked || isFollowerOnlyAndNotFollowing
+    const isDisabled = isHidden || isDelayedBlocked || isFollowerOnlyAndNotFollowing
 
-    const handleSubmit = (e:React.FocusEvent<HTMLFormElement>)=>{
+    const handleSubmit = (e: React.FocusEvent<HTMLFormElement>) => {
         e.preventDefault()
         e.stopPropagation()
 
-        if(!value||isDisabled) return;
+        if (!value || isDisabled) return;
 
-        if(isDelayed && !isDelayedBlocked){
+        if (isDelayed && !isDelayedBlocked) {
             setIsDelayedBlocked(true)
-            setTimeout(()=>{
+            setTimeout(() => {
                 setIsDelayedBlocked(false)
                 onSubmit()
-            },3000)
-        }else{
+            }, 3000)
+        } else {
             onSubmit()
         }
     }
-    if(isHidden){ /////////////////////////////////////////////////////// !!
+    if (isHidden) {
         return null
     }
 
     return (
-        <form 
-        onSubmit={handleSubmit}
-         className="flex flex-col items-center gap-y-4 p-3">
+        <form
+            onSubmit={handleSubmit}
+            className="flex gap-1 justify-center items-center gap-y-4 p-3">
             <div className="w-full">
                 <ChatInfo
-                isDelayed={isDelayed}
-                isFollowersOnly={isChatFollowersOnly}
+                    isDelayed={isDelayed}
+                    isFollowersOnly={isChatFollowersOnly}
                 />
-            <Input 
-            onChange={(e)=>{onChange(e.target.value)}}
-            value={value}
-            disabled={isDisabled}
-            placeholder="Send a message"
-            className={cn(
-                "border-white/10",
-                isChatFollowersOnly && "rounded-t-none border-b-0"
-            )}
-            />
+                <Input
+                    onChange={(e) => { onChange(e.target.value) }}
+                    value={value}
+                    disabled={isDisabled}
+                    placeholder="Send a message"
+                    className={cn(
+                        "border-white/10",
+                        isChatFollowersOnly && "rounded-t-none border-b-0"
+                    )}
+                />
             </div>
             <div className="">
                 <Button
-                type="submit"
-                variant={'primary'}
-                size={'sm'}
-                disabled={isDisabled}
+                    type="submit"
+                    variant={'primary'}
+                    size={'sm'}
+                    disabled={isDisabled}
                 >
                     Chat
                 </Button>
@@ -80,14 +80,14 @@ const ChatForm = ({onChange,onSubmit,value,isChatFollowersOnly,isDelayed,isFollo
 
 export default ChatForm
 
-export const ChatFormSkeleton = ()=>{
-return(
-    <div className="flex flex-col items-center gap-y-4 p-3">
-        <Skeleton  className="w-full h-10"/>
-        <div className="flex items-center gap-x-2 ml-auto">
-            <Skeleton className="w-7 h-7" />
-            <Skeleton  className="h-7 w-12"/>
+export const ChatFormSkeleton = () => {
+    return (
+        <div className="flex flex-col items-center gap-y-4 p-3">
+            <Skeleton className="w-full h-10" />
+            <div className="flex items-center gap-x-2 ml-auto">
+                <Skeleton className="w-7 h-7" />
+                <Skeleton className="h-7 w-12" />
+            </div>
         </div>
-    </div>
-)
+    )
 }
