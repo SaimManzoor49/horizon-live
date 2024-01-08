@@ -18,7 +18,12 @@ interface CommunityItemProps {
 
 const CommunityItem = ({hostName,viewerName,participantIdentity,participantName}:CommunityItemProps) => {
     return (
-        <div>CommunityItem</div>
+        <>
+        <div>{viewerName}</div>
+        <div>{hostName}</div>
+        <div>{participantIdentity}</div>
+        <div>{hostName}</div>
+        </>
     )
 }
 
