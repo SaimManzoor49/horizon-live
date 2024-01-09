@@ -16,14 +16,25 @@ interface CommunityItemProps {
 }
 
 
-const CommunityItem = ({hostName,viewerName,participantIdentity,participantName}:CommunityItemProps) => {
+const CommunityItem = ({ hostName, viewerName, participantIdentity, participantName }: CommunityItemProps) => {
+
+    const color = stringToColor(participantName || "")
+    const isSelf = participantName===viewerName
+    const isHost = viewerName===hostName
+
     return (
-        <>
-        <div>{viewerName}</div>
-        <div>{hostName}</div>
-        <div>{participantIdentity}</div>
-        <div>{hostName}</div>
-        </>
+        <div className="group flex items-center justify-between w-full p-2 rounded-md text-sm hover:bg-white/5">
+            <p style={{ color: color }}>
+                {participantName}
+            </p>
+        {isHost && !isSelf && (
+            <Hint label="Block">
+                <Button className="h-auto w-auto p-1 opacity-0 group-hover:opacity-100 transition">
+                    <MinusCircle />
+                </Button>
+            </Hint>
+        )}
+        </div>
     )
 }
 
