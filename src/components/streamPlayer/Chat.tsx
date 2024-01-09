@@ -5,9 +5,9 @@ import { useChat, useConnectionState, useRemoteParticipant } from "@livekit/comp
 import { ConnectionState } from "livekit-client"
 import { useEffect, useMemo, useState } from "react"
 import { useMediaQuery } from "usehooks-ts"
-import ChatHeader from "./ChatHeader"
-import ChatForm from "./ChatForm"
-import { ChatList } from "./ChatList"
+import ChatHeader, { ChatHeaderSkeleton } from "./ChatHeader"
+import ChatForm, { ChatFormSkeleton } from "./ChatForm"
+import { ChatList, ChatListSkeleton } from "./ChatList"
 import Community from "./Community"
 
 interface ChatProps {
@@ -87,3 +87,12 @@ const Chat = ({ hostIdentity, hostName, isChatDelayed, isChatEnabled, isChatFoll
 }
 
 export default Chat
+export const ChatSkeleton = ()=>{
+    return(
+        <div className="flex flex-col border-l border-b py-0 h-[calc(100vh-80px)] border-2">
+            <ChatHeaderSkeleton />
+            <ChatListSkeleton />
+            <ChatFormSkeleton />
+        </div>
+    )
+}
