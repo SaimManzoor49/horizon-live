@@ -1,9 +1,9 @@
 'use client'
 import { userViewerToken } from '@/hooks/userViewerToken'
-import { User,Stream } from '@prisma/client'
+import { User, Stream } from '@prisma/client'
 import React from 'react'
 
-import {LiveKitRoom} from '@livekit/components-react'
+import { LiveKitRoom } from '@livekit/components-react'
 import Video, { VideoSkeleton } from './Video'
 import { useChatSidebar } from '@/store/useChatSidebar'
 import { cn } from '@/lib/utils'
@@ -19,12 +19,12 @@ interface StreamPlayerProps {
 
 const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
 
-    const {token,name,identity} = userViewerToken(user.id)
-    const {collapsed} = useChatSidebar((state)=>state)
+    const { token, name, identity } = userViewerToken(user.id)
+    const { collapsed } = useChatSidebar((state) => state)
 
-    if(!token || !name || !identity) {
+    if (!token || !name || !identity) {
         return (
-           <StreamPlayerSkeleton />
+            <StreamPlayerSkeleton />
         )
     }
 
@@ -35,40 +35,40 @@ const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
                     <ChatToggle />
                 </div>
             )}
-            <LiveKitRoom 
-            token={token}
-            serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_WS_URL!}
-            className={cn(
-                'grid grid-cols-1 lg:gap-y-0 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-6 h-full',
-                collapsed && 'lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2'
-            )}
+            <LiveKitRoom
+                token={token}
+                serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_WS_URL!}
+                className={cn(
+                    "grid grid-cols-1 lg:gap-y-0 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-6 h-full",
+                    collapsed && "lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2"
+                )}
             >
                 <div className="space-y-4 col-span-1 lg:col-span-2 xl:col-span-2 2xl:col-span-5 lg:overflow-y-auto hidden-scrollbar pb-10">
                     <Video
-                    hostName={user.username}
-                    hostIdentity={user.id}
+                        hostName={user.username}
+                        hostIdentity={user.id}
                     />
-                    <Header 
-                    hostName={user.username}
-                    hostIdentity={user.id}
-                    viewerIdentity={identity}
-                    imageUrl={user.imageUrl}
-                    isFollowing={isFollowing}
-                    name={stream.name}
+                    <Header
+                        hostName={user.username}
+                        hostIdentity={user.id}
+                        viewerIdentity={identity}
+                        imageUrl={user.imageUrl}
+                        isFollowing={isFollowing}
+                        name={stream.name}
                     />
                 </div>
                 <div className={cn(
                     "col-span-1",
-                    collapsed&& 'hidden'
+                    collapsed && 'hidden'
                 )}>
-                    <Chat 
-                    viewerName={name}
-                    hostName={user.username}
-                    hostIdentity={user.id}
-                    isFollowing={isFollowing}
-                    isChatEnabled={stream.isChatEnabled}
-                    isChatDelayed={stream.isChatDelayed}
-                    isChatFollowersOnly={stream.isChatFollowersOnly}
+                    <Chat
+                        viewerName={name}
+                        hostName={user.username}
+                        hostIdentity={user.id}
+                        isFollowing={isFollowing}
+                        isChatEnabled={stream.isChatEnabled}
+                        isChatDelayed={stream.isChatDelayed}
+                        isChatFollowersOnly={stream.isChatFollowersOnly}
                     />
                 </div>
             </LiveKitRoom>
@@ -77,8 +77,8 @@ const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
 }
 
 export default StreamPlayer
-export const StreamPlayerSkeleton=()=>{
-    return(
+export const StreamPlayerSkeleton = () => {
+    return (
         <div className="grid grid-cols-1 lg:gap-y-0 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-6 h-full">
             <div className="space-y-4 col-span-1 lg:col-span-2 xl:col-span-2 2xl:col-span-5 lg:overflow-y-auto hidden-scrollbar pb-10">
                 <VideoSkeleton />
