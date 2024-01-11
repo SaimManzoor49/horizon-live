@@ -10,12 +10,14 @@ import { cn } from '@/lib/utils'
 import Chat, { ChatSkeleton } from './Chat'
 import ChatToggle from './ChatToggle'
 import Header, { HeaderSkeleton } from './Header'
+import InfoCard from './InfoCard'
 
 interface StreamPlayerProps {
     user: User & { stream: Stream | null },
     stream: Stream,
     isFollowing: boolean,
 }
+
 
 const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
 
@@ -55,6 +57,12 @@ const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
                         imageUrl={user.imageUrl}
                         isFollowing={isFollowing}
                         name={stream.name}
+                    />
+                    <InfoCard 
+                    hostIdentity={user.id}
+                    viewerIdentity={identity}
+                    name={stream.name}
+                    thumbnailUrl={stream.thumbnailUrl}
                     />
                 </div>
                 <div className={cn(
