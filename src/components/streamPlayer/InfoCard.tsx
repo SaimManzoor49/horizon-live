@@ -3,6 +3,7 @@
 import { Pencil } from "lucide-react"
 import { Separator } from "../ui/separator"
 import Image from "next/image"
+import InfoModal from "./InfoModal"
 
 
 interface InfoCardProps{
@@ -32,7 +33,10 @@ const InfoCard = ({hostIdentity,viewerIdentity,name,thumbnailUrl}:InfoCardProps)
                     </h2>
                     <p className="text-muted-foreground text-xs lg:text-sm">Maximize your visibility</p>
                 </div>
-                {/* add model */}
+                <InfoModal 
+                initialName={name}
+                initialThumbnailUrl={thumbnailUrl}
+                />
             </div>
             <Separator />
             <div className="p-4 lg:p-6 space-y-4">
