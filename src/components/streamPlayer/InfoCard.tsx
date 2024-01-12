@@ -58,6 +58,7 @@ const InfoCard = ({hostIdentity,viewerIdentity,name,thumbnailUrl}:InfoCardProps)
                             fill
                             src={thumbnailUrl}
                             alt={name}
+                            className="object-cover"
                             />
                         </div>
                     )}
