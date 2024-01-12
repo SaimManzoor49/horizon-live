@@ -49,6 +49,18 @@ const InfoModal = ({ initialName, initialThumbnailUrl }: InfoModalProps) => {
         })
     }
 
+    const onRemove = ()=>{
+        startTransition(()=>{
+            updateStream({thumbnailUrl:null})
+            .then(()=>{
+                toast.success('Thumbail removed')
+                setThumbnail("")
+                closeRef?.current?.click()
+            })
+            .catch(()=>toast.error('Something went wrong'))
+        })
+    }
+
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -89,7 +101,7 @@ const InfoModal = ({ initialName, initialThumbnailUrl }: InfoModalProps) => {
                                         <Button 
                                         type="button"
                                         disabled={pending}
-                                        onClick={()=>{}}
+                                        onClick={onRemove}
                                         className="h-auto w-auto p-1.5"
                                         >
                                             <Trash className="h-4 w-4" />
@@ -119,6 +131,7 @@ const InfoModal = ({ initialName, initialThumbnailUrl }: InfoModalProps) => {
                                     onClientUploadComplete={(res) => {
                                         setThumbnail(res?.[0]?.url)
                                         router.refresh();
+                                        closeRef?.current?.click();
                                     }}
 
                                 />
