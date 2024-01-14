@@ -1,7 +1,7 @@
 'use client'
 import { userViewerToken } from '@/hooks/userViewerToken'
 import { User, Stream } from '@prisma/client'
-import React from 'react'
+import React, { use } from 'react'
 
 import { LiveKitRoom } from '@livekit/components-react'
 import Video, { VideoSkeleton } from './Video'
@@ -13,7 +13,9 @@ import Header, { HeaderSkeleton } from './Header'
 import InfoCard from './InfoCard'
 
 interface StreamPlayerProps {
-    user: User & { stream: Stream | null },
+    user: User & { stream: Stream | null,
+    _count:{followedBy:number}
+    },
     stream: Stream,
     isFollowing: boolean,
 }
@@ -63,6 +65,13 @@ const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
                     viewerIdentity={identity}
                     name={stream.name}
                     thumbnailUrl={stream.thumbnailUrl}
+                    />
+                    <AboutCard 
+                    hostName={user.username}
+                    hostIdentity={user.id}
+                    viewerIdentity={identity}
+                    bio={user.bio}
+                    followedByCount={user._count.followedBy}
                     />
                 </div>
                 <div className={cn(
