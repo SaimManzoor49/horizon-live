@@ -11,6 +11,7 @@ import Chat, { ChatSkeleton } from './Chat'
 import ChatToggle from './ChatToggle'
 import Header, { HeaderSkeleton } from './Header'
 import InfoCard from './InfoCard'
+import AboutCard from './AboutCard'
 
 interface StreamPlayerProps {
     user: User & { stream: Stream | null,
