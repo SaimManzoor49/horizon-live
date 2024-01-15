@@ -60,7 +60,7 @@ const ChatForm = ({ onChange, onSubmit, value, isChatFollowersOnly, isDelayed, i
                     placeholder="Send a message"
                     className={cn(
                         "border-white/10",
-                        isChatFollowersOnly && "rounded-t-none border-b-0"
+                        (isChatFollowersOnly || isDelayed) && "rounded-t-none border-b-0"
                     )}
                 />
             </div>

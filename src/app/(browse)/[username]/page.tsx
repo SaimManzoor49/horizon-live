@@ -5,31 +5,34 @@ import { notFound } from 'next/navigation'
 import React from 'react'
 import { Actions } from './_components/actions'
 import { isBlockedByUser } from '@/lib/block-service'
+import StreamPlayer from '@/components/streamPlayer'
 
-interface UserPageProps{
-    params:{username:string}
+interface UserPageProps {
+  params: { username: string }
 }
 
-const UserPage = async({params}:UserPageProps) => {
-    const username = params.username
-    const user = await getUserByUserName(username)
+const UserPage = async ({ params }: UserPageProps) => {
+  const username = params.username
+  const user = await getUserByUserName(username)
 
-    if(!user) {
-        notFound()
-    }
-    
-    const isFollowing = await isFollowingUser(user.id)
-    const isBlocked = await isBlockedByUser(user.id)
-    // if(isBlocked) {
-    //     notFound()
-    // }
+  if (!user || !user.stream) {
+    notFound()
+  }
+
+  const isFollowing = await isFollowingUser(user.id)
+  const isBlocked = await isBlockedByUser(user.id)
+
+  if (isBlocked) {
+    notFound()
+  }
+
   return (
-    <div >
-        {user.username}
-        isFollowing :{`${isFollowing}`}
-        <Actions isFollowing={isFollowing} userId={user.id} />
-        <p>is blocked by this user: {`${isBlocked}`}</p>
-        </div>
+    <StreamPlayer
+      user={user}
+      stream={user.stream}
+      isFollowing={isFollowing}
+
+    />
   )
 }
 
