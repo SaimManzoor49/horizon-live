@@ -1,6 +1,7 @@
 'use client'
 
 import { VerifiedIcon } from "lucide-react"
+import BioModal from "./BioModal"
 
 
 interface AboutCardProps {
@@ -34,7 +35,9 @@ const AboutCard = ({
                         <VerifiedIcon />
                     </div>
                     {isHost && (
-                        <p>Edit</p>
+                      <BioModal 
+                      initialValue={bio}
+                      />
                     )}
                 </div>
                 <div className="text-sm text-muted-foreground">
