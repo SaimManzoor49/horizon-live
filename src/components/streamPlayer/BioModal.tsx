@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { ElementRef, useRef, useState, useTransition } from "react"
 import Hint from "../hint"
 import { Button } from "../ui/button"
 import {
@@ -12,6 +12,8 @@ import {
      DialogTrigger
  } from "../ui/dialog"
 import { Textarea } from "../ui/textarea"
+import { updateUser } from "@/actions/user"
+import { toast } from "sonner"
 
 
 interface BioModalProps{
@@ -20,7 +22,22 @@ interface BioModalProps{
 
 
 const BioModal = ({initialValue}:BioModalProps) => {
+
 const [value, setValue] = useState(initialValue||"")
+const [pending, startTransition] = useTransition( )
+const closeRef = useRef<ElementRef<'button'>>(null)
+
+const onSubmit = (e:React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault()
+    startTransition(()=>{
+        updateUser({bio:value})
+        .then(()=>{
+            toast.success("User bio updated")
+            closeRef?.current?.click()
+        })
+        .catch(()=>toast.error('Something went wrong'))
+    })
+}
 
   return (
     <Dialog>
@@ -35,22 +52,22 @@ const [value, setValue] = useState(initialValue||"")
                     Edit user bio
                 </DialogTitle>
             </DialogHeader>
-            <form onSubmit={()=>{}} className="space-y-4">
+            <form onSubmit={onSubmit} className="space-y-4">
                 <Textarea 
                 placeholder="User bio"
-                onChange={()=>{}}
+                onChange={(e)=>setValue(e.target.value)}
                 value={value}
-                disabled={false}
+                disabled={pending}
                 className="resize-none"
                 />
                 <div className="flex justify-between">
-                    <DialogClose>
+                    <DialogClose asChild ref={closeRef}>
                         <Button type="button" variant={'ghost'}>
                             Cancle
                         </Button>
                     </DialogClose>
                     <Button 
-                    disabled={false}
+                    disabled={pending}
                     type="submit"
                     variant={'primary'}
                     >
