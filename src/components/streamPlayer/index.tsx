@@ -76,7 +76,7 @@ const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
                     />
                 </div>
                 <div className={cn(
-                    "col-span-1",
+                    "col-span-1 ",
                     collapsed && 'hidden'
                 )}>
                     <Chat
@@ -95,6 +95,8 @@ const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
 }
 
 export default StreamPlayer
+
+
 export const StreamPlayerSkeleton = () => {
     return (
         <div className="grid grid-cols-1 lg:gap-y-0 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-6 h-full">
