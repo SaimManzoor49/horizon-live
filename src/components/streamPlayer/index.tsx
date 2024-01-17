@@ -1,5 +1,5 @@
 'use client'
-import { userViewerToken } from '@/hooks/userViewerToken'
+import { UserViewerToken } from '@/hooks/userViewerToken'
 import { User, Stream } from '@prisma/client'
 import React, { use } from 'react'
 
@@ -44,7 +44,7 @@ interface StreamPlayerProps {
 
 const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
 
-    const { token, name, identity } = userViewerToken(user.id)
+    const { token, name, identity } = UserViewerToken(user.id)
     const { collapsed } = useChatSidebar((state) => state)
 
     if (!token || !name || !identity) {
