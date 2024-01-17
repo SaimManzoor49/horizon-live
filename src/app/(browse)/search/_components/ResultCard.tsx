@@ -1,13 +1,20 @@
 import Thumbnail, { ThumbnailSkeleton } from '@/components/Thumbnail'
 import VarifiedMark from '@/components/VarifiedMark'
-import { Stream, User } from '@prisma/client'
+import {  User } from '@prisma/client'
 import Link from 'next/link'
 import React from 'react'
 import {formatDistanceToNow} from 'date-fns'
 import { Skeleton } from '@/components/ui/skeleton'
 
 interface ResultCardProps{
-    data:Stream & {user:User}
+    data:{
+        id:string,
+        name:string
+        thumbnailUrl:string|null
+        isLive:boolean
+        updatedAt:Date
+        user:User
+    }
 }
 
 const ResultCard = ({data}:ResultCardProps) => {
