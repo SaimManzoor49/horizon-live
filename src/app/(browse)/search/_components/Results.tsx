@@ -1,6 +1,7 @@
 import { getSearch } from '@/lib/search-service'
 import React from 'react'
-import ResultCard from './ResultCard'
+import ResultCard, { ResultCardSkeleton } from './ResultCard'
+import { Skeleton } from '@/components/ui/skeleton'
 
 interface ResultsProps {
     term?: string
@@ -35,6 +36,15 @@ const Results = async ({ term }: ResultsProps) => {
 export default Results
 export const ResultsSkeleton = () => {
     return (
-        <div className=""></div>
+        <div className="">
+            <Skeleton className='h-8 w-[290px] mb-4' />
+            <div className="flex flex-col gap-y-4">
+                {[...Array(4)].map((_, i) => (
+                    <ResultCardSkeleton
+                        key={i}
+                    />
+                ))}
+            </div>
+        </div>
     )
 }
