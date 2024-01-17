@@ -5,7 +5,7 @@ import { createViewerToken } from "@/actions/token";
 
 
 
-export const userViewerToken = (hostIdentity:string) => {
+export const UserViewerToken = (hostIdentity:string) => {
 
   const [token,setToken]= useState("") 
   const [name,setName] = useState("")
