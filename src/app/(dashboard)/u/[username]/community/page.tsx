@@ -8,16 +8,15 @@ import { format } from 'date-fns'
 
 const ComunityPage = async() => {
 
-    const blockedUsers = await getBlockedUsers()
+    const blockedUsers = await getBlockedUsers();
 
-    const formatedData = blockedUsers.map((block)=>({
-        ...block,
-        userId:block.blocked.id,
-        imageUrl:block.blocked.imageUrl,
-        username:block.blocked.username,
-        createdAt:format(new Date(block.blocked.createdAt),'dd/MM/yyyy'),
-
-    }))
+    const formattedData = blockedUsers.map((block) => ({
+      ...block,
+      userId: block.blocked.id,
+      imageUrl: block.blocked.imageUrl,
+      username: block.blocked.username,
+      createdAt: format(new Date(block.blocked.createdAt), "dd/MM/yyyy"),
+    }));
 
     return (
         <div className='p-6'>
@@ -26,7 +25,7 @@ const ComunityPage = async() => {
             </div>
             <DataTable 
             columns={columns}
-            data={formatedData}
+            data={formattedData}
             />
         </div>
     )
